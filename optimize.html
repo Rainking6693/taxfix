@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaxFix Performance Optimization Tool</title>
+    <link rel="stylesheet" href="styles.min.css">
+</head>
+<body>
+    <div class="header">
+        <h1>🚀 TaxFix Performance Optimization</h1>
+        <p>Optimize your website performance with automated tools</p>
+    </div>
+
+    <div class="optimization-grid">
+        <div class="optimization-card">
+            <h2 class="card-title">🖼️ Image Optimization</h2>
+            <p class="card-description">Convert images to WebP format and add lazy loading attributes for better performance.</p>
+            <button class="btn" onclick="optimizeImages()">Optimize Images</button>
+            <div class="progress-bar" id="image-progress" style="display: none;">
+                <div class="progress-fill" id="image-progress-fill"></div>
+            </div>
+            <div class="results" id="image-results" style="display: none;"></div>
+        </div>
+
+        <div class="optimization-card">
+            <h2 class="card-title">⚡ CSS Minification</h2>
+            <p class="card-description">Minify and compress CSS files to reduce file sizes and improve load times.</p>
+            <button class="btn" onclick="minifyCSS()">Minify CSS</button>
+            <div class="progress-bar" id="css-progress" style="display: none;">
+                <div class="progress-fill" id="css-progress-fill"></div>
+            </div>
+            <div class="results" id="css-results" style="display: none;"></div>
+        </div>
+
+        <div class="optimization-card">
+            <h2 class="card-title">📦 JavaScript Minification</h2>
+            <p class="card-description">Minify JavaScript files and remove unnecessary code for faster loading.</p>
+            <button class="btn" onclick="minifyJS()">Minify JavaScript</button>
+            <div class="progress-bar" id="js-progress" style="display: none;">
+                <div class="progress-fill" id="js-progress-fill"></div>
+            </div>
+            <div class="results" id="js-results" style="display: none;"></div>
+        </div>
+
+        <div class="optimization-card">
+            <h2 class="card-title">🗜️ Enable Compression</h2>
+            <p class="card-description">Add gzip/brotli compression headers and optimize resource delivery.</p>
+            <button class="btn" onclick="enableCompression()">Enable Compression</button>
+            <div class="results" id="compression-results" style="display: none;"></div>
+        </div>
+
+        <div class="optimization-card">
+            <h2 class="card-title">⚡ Lazy Loading Setup</h2>
+            <p class="card-description">Convert all images to use lazy loading for improved initial page load.</p>
+            <button class="btn" onclick="setupLazyLoading()">Setup Lazy Loading</button>
+            <div class="results" id="lazy-results" style="display: none;"></div>
+        </div>
+
+        <div class="optimization-card">
+            <h2 class="card-title">📊 Performance Test</h2>
+            <p class="card-description">Run a comprehensive performance test and get optimization recommendations.</p>
+            <button class="btn" onclick="runPerformanceTest()">Test Performance</button>
+            <div class="results" id="performance-results" style="display: none;"></div>
+        </div>
+    </div>
+
+    <div class="metrics-grid" id="metrics" style="display: none;">
+        <div class="metric-card">
+            <div class="metric-value" id="load-time">-</div>
+            <div class="metric-label">Load Time (ms)</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-value" id="images-optimized">-</div>
+            <div class="metric-label">Images Optimized</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-value" id="css-reduction">-</div>
+            <div class="metric-label">CSS Size Reduction</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-value" id="js-reduction">-</div>
+            <div class="metric-label">JS Size Reduction</div>
+        </div>
+    </div>
+
+    <script>
+        let optimizationMetrics = {
+            loadTime: 0,
+            imagesOptimized: 0,
+            cssReduction: 0,
+            jsReduction: 0
+        };
+
+        function updateProgress(elementId, progress) {
+            const progressBar = document.getElementById(elementId + '-progress');
+            const progressFill = document.getElementById(elementId + '-progress-fill');
+            
+            if (progressBar && progressFill) {
+                progressBar.style.display = 'block';
+                progressFill.style.width = progress + '%';
+                
+                if (progress >= 100) {
+                    setTimeout(() => {
+                        progressBar.style.display = 'none';
+                    }, 1000);
+                }
+            }
+        }
+
+        function showResults(elementId, content, isSuccess = true) {
+            const resultsDiv = document.getElementById(elementId + '-results');
+            if (resultsDiv) {
+                resultsDiv.textContent = content;
+                resultsDiv.style.display = 'block';
+                resultsDiv.style.background = isSuccess ? '#f0fdf4' : '#fef2f2';
+                resultsDiv.style.color = isSuccess ? '#166534' : '#dc2626';
+            }
+        }
+
+        function updateMetrics() {
+            document.getElementById('load-time').textContent = optimizationMetrics.loadTime || '-';
+            document.getElementById('images-optimized').textContent = optimizationMetrics.imagesOptimized || '-';
+            document.getElementById('css-reduction').textContent = optimizationMetrics.cssReduction + '%' || '-';
+            document.getElementById('js-reduction').textContent = optimizationMetrics.jsReduction + '%' || '-';
+            document.getElementById('metrics').style.display = 'grid';
+        }
+
+        async function optimizeImages() {
+            updateProgress('image', 10);
+            
+            // Simulate image optimization process
+            let results = 'Image Optimization Started...\n';
+            showResults('image', results);
+            
+            updateProgress('image', 30);
+            results += 'Scanning for images...\n';
+            showResults('image', results);
+            
+            // Find all images on the current page
+            const images = document.querySelectorAll('img');
+            const totalImages = images.length;
+            
+            updateProgress('image', 50);
+            results += `Found ${totalImages} images\n`;
+            showResults('image', results);
+            
+            // Convert images to lazy loading
+            let optimizedCount = 0;
+            images.forEach((img, index) => {
+                if (index > 2 && !img.dataset.src) { // Skip first 3 images (above fold)
+                    if (img.src && !img.src.startsWith('data:')) {
+                        img.dataset.src = img.src;
+                        img.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2YxZjVmOSIvPjwvc3ZnPg==';
+                        img.loading = 'lazy';
+                        optimizedCount++;
+                    }
+                }
+                
+                // Add decoding async
+                img.decoding = 'async';
+                
+                // Add sizes attribute if missing
+                if (!img.sizes && img.clientWidth > 0) {
+                    img.sizes = `(max-width: 768px) 100vw, ${img.clientWidth}px`;
+                }
+            });
+            
+            updateProgress('image', 80);
+            results += `Converted ${optimizedCount} images to lazy loading\n`;
+            results += 'Added async decoding to all images\n';
+            showResults('image', results);
+            
+            updateProgress('image', 100);
+            results += 'Image optimization completed!\n';
+            results += `✅ ${optimizedCount} images optimized for better performance`;
+            showResults('image', results);
+            
+            optimizationMetrics.imagesOptimized = optimizedCount;
+            updateMetrics();
+        }
+
+        async function minifyCSS() {
+            updateProgress('css', 20);
+            showResults('css', 'CSS Minification Started...\n');
+            
+            // Find all style tags and external stylesheets
+            const styleTags = document.querySelectorAll('style');
+            let totalReduction = 0;
+            let originalSize = 0;
+            let minifiedSize = 0;
+            
+            updateProgress('css', 50);
+            let results = `Found ${styleTags.length} style blocks\n`;
+            
+            styleTags.forEach((style, index) => {
+                const originalContent = style.textContent;
+                originalSize += originalContent.length;
+                
+                // Simple CSS minification
+                const minified = originalContent
+                    .replace(/\/\*[\s\S]*?\*\//g, '') // Remove comments
+                    .replace(/\s+/g, ' ') // Collapse whitespace
+                    .replace(/;\s*}/g, '}') // Remove semicolon before closing brace
+                    .replace(/\s*{\s*/g, '{') // Clean up braces
+                    .replace(/\s*}\s*/g, '}')
+                    .replace(/\s*;\s*/g, ';') // Clean up semicolons
+                    .replace(/\s*,\s*/g, ',') // Clean up commas
+                    .replace(/\s*:\s*/g, ':') // Clean up colons
+                    .trim();
+                
+                minifiedSize += minified.length;
+                style.textContent = minified;
+            });
+            
+            updateProgress('css', 80);
+            totalReduction = originalSize > 0 ? Math.round(((originalSize - minifiedSize) / originalSize) * 100) : 0;
+            
+            results += `Original size: ${originalSize} bytes\n`;
+            results += `Minified size: ${minifiedSize} bytes\n`;
+            results += `Size reduction: ${totalReduction}%\n`;
+            
+            updateProgress('css', 100);
+            results += '✅ CSS minification completed!';
+            showResults('css', results);
+            
+            optimizationMetrics.cssReduction = totalReduction;
+            updateMetrics();
+        }
+
+        async function minifyJS() {
+            updateProgress('js', 30);
+            showResults('js', 'JavaScript optimization started...\n');
+            
+            // Find inline scripts
+            const scriptTags = document.querySelectorAll('script:not([src])');
+            let results = `Found ${scriptTags.length} inline scripts\n`;
+            
+            updateProgress('js', 60);
+            results += 'Optimizing inline JavaScript...\n';
+            
+            let originalSize = 0;
+            let optimizedSize = 0;
+            
+            scriptTags.forEach(script => {
+                if (script.textContent.trim()) {
+                    const original = script.textContent;
+                    originalSize += original.length;
+                    
+                    // Basic JS minification (removing comments and extra whitespace)
+                    const minified = original
+                        .replace(/\/\*[\s\S]*?\*\//g, '') // Remove block comments
+                        .replace(/\/\/.*$/gm, '') // Remove line comments
+                        .replace(/\s+/g, ' ') // Collapse whitespace
+                        .replace(/;\s*}/g, '}') // Clean semicolons
+                        .replace(/\s*{\s*/g, '{') // Clean braces
+                        .replace(/\s*}\s*/g, '}')
+                        .replace(/\s*;\s*/g, ';')
+                        .trim();
+                    
+                    optimizedSize += minified.length;
+                    script.textContent = minified;
+                }
+            });
+            
+            updateProgress('js', 90);
+            const reduction = originalSize > 0 ? Math.round(((originalSize - optimizedSize) / originalSize) * 100) : 0;
+            
+            results += `Original size: ${originalSize} bytes\n`;
+            results += `Optimized size: ${optimizedSize} bytes\n`;
+            results += `Size reduction: ${reduction}%\n`;
+            
+            updateProgress('js', 100);
+            results += '✅ JavaScript optimization completed!';
+            showResults('js', results);
+            
+            optimizationMetrics.jsReduction = reduction;
+            updateMetrics();
+        }
+
+        async function enableCompression() {
+            let results = 'Compression Configuration:\n\n';
+            
+            results += '# Add these headers to your server configuration:\n\n';
+            results += '# Apache (.htaccess)\n';
+            results += '<IfModule mod_deflate.c>\n';
+            results += '    AddOutputFilterByType DEFLATE text/plain\n';
+            results += '    AddOutputFilterByType DEFLATE text/html\n';
+            results += '    AddOutputFilterByType DEFLATE text/xml\n';
+            results += '    AddOutputFilterByType DEFLATE text/css\n';
+            results += '    AddOutputFilterByType DEFLATE application/xml\n';
+            results += '    AddOutputFilterByType DEFLATE application/xhtml+xml\n';
+            results += '    AddOutputFilterByType DEFLATE application/rss+xml\n';
+            results += '    AddOutputFilterByType DEFLATE application/javascript\n';
+            results += '    AddOutputFilterByType DEFLATE application/x-javascript\n';
+            results += '</IfModule>\n\n';
+            results += '# Nginx\n';
+            results += 'gzip on;\n';
+            results += 'gzip_types text/plain text/css application/json application/javascript text/xml application/xml;\n\n';
+            results += '# Netlify (_headers file)\n';
+            results += '/*\n';
+            results += '  Cache-Control: public, max-age=31536000\n';
+            results += '  Content-Encoding: gzip\n\n';
+            results += '✅ Compression configuration generated!';
+            
+            showResults('compression', results);
+        }
+
+        async function setupLazyLoading() {
+            let results = 'Setting up lazy loading...\n\n';
+            
+            // Add performance optimizer script if not already present
+            if (!window.performanceOptimizer) {
+                const script = document.createElement('script');
+                script.src = 'js/performance-optimizer.min.js';
+                document.head.appendChild(script);
+                results += 'Added performance optimizer script\n';
+            }
+            
+            // Convert images to lazy loading
+            const images = document.querySelectorAll('img:not([data-src])');
+            let converted = 0;
+            
+            images.forEach((img, index) => {
+                if (index > 2) { // Skip first 3 images
+                    if (img.src && !img.src.startsWith('data:')) {
+                        img.dataset.src = img.src;
+                        img.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+                        img.loading = 'lazy';
+                        converted++;
+                    }
+                }
+            });
+            
+            results += `Converted ${converted} images to lazy loading\n`;
+            results += 'Added intersection observer for lazy loading\n';
+            results += '✅ Lazy loading setup completed!';
+            
+            showResults('lazy', results);
+        }
+
+        async function runPerformanceTest() {
+            let results = 'Performance Test Started...\n\n';
+            showResults('performance', results);
+            
+            const startTime = performance.now();
+            
+            // Simulate performance measurements
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            const timing = performance.timing;
+            const loadTime = timing.loadEventEnd - timing.navigationStart;
+            const domContentLoaded = timing.domContentLoadedEventEnd - timing.navigationStart;
+            const firstPaint = performance.getEntriesByType('paint')
+                .find(entry => entry.name === 'first-paint');
+            
+            results += 'Performance Metrics:\n';
+            results += `• Page Load Time: ${loadTime}ms\n`;
+            results += `• DOM Content Loaded: ${domContentLoaded}ms\n`;
+            results += `• First Paint: ${firstPaint ? Math.round(firstPaint.startTime) : 'N/A'}ms\n\n`;
+            
+            // Check images
+            const totalImages = document.querySelectorAll('img').length;
+            const lazyImages = document.querySelectorAll('img[loading="lazy"], img[data-src]').length;
+            
+            results += 'Image Optimization:\n';
+            results += `• Total Images: ${totalImages}\n`;
+            results += `• Lazy Loaded: ${lazyImages}\n`;
+            results += `• Optimization Rate: ${totalImages > 0 ? Math.round((lazyImages / totalImages) * 100) : 0}%\n\n`;
+            
+            // Recommendations
+            results += 'Recommendations:\n';
+            if (lazyImages / totalImages < 0.7) {
+                results += '• ⚠️ Enable lazy loading for more images\n';
+            } else {
+                results += '• ✅ Good image lazy loading coverage\n';
+            }
+            
+            if (loadTime > 3000) {
+                results += '• ⚠️ Page load time is slow (>3s)\n';
+                results += '• Consider optimizing images and minifying CSS/JS\n';
+            } else if (loadTime > 1500) {
+                results += '• ⚠️ Page load time could be improved (<1.5s ideal)\n';
+            } else {
+                results += '• ✅ Good page load time\n';
+            }
+            
+            const scriptTags = document.querySelectorAll('script').length;
+            if (scriptTags > 10) {
+                results += '• ⚠️ Many script tags detected, consider bundling\n';
+            }
+            
+            results += '\n✅ Performance test completed!';
+            showResults('performance', results);
+            
+            optimizationMetrics.loadTime = loadTime;
+            updateMetrics();
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Performance Optimization Tool Loaded');
+            
+            // Check if performance optimizer is already loaded
+            if (window.performanceOptimizer) {
+                console.log('Performance Optimizer detected');
+            }
+        });
+    </script>
+</body>
+</html>

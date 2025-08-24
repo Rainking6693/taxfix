@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What's My Business Structure Quiz | LLC vs Sole Prop vs S-Corp | TaxFix</title>
+    <meta name="description" content="Free quiz to determine the best business structure for your gig work. Find out if you should be a sole proprietor, LLC, or S-Corp based on your income and goals.">
+    <meta name="keywords" content="business structure quiz, LLC vs sole proprietor, S-Corp election, gig worker business entity, freelancer business structure">
+    
+    <!-- DNS Prefetch for performance -->
+    <link rel="dns-prefetch" href="//www.googletagmanager.com">
+    <link rel="dns-prefetch" href="//analytics.tiktok.com">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    
+    <!-- Preconnect to critical resources -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+
+    <!-- Optimized Analytics (loads after page load) -->
+    <script defer src="js/optimized-analytics.min.js"></script>
+
+    
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    // Handled by optimized analytics );
+    // Handled by optimized analytics </script>
+
+    
+    
+    <link rel="stylesheet" href="styles.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header-main">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo-link">
+                    <picture>
+                        <source srcset="TaxFixLogo-optimized.webp" type="image/webp">
+                        <img src="TaxFixLogo-optimized.png" alt="TaxFix - Keep More, Cry Less" class="logo" width="170" height="80" loading="eager" fetchpriority="high">
+                    </picture>
+                </a>
+                <nav class="main-nav">
+                    <a href="/hiddenprofitfinder" class="nav-cta-button">Find Hidden Profits FREE</a>
+                    <a href="https://taxtok.gumroad.com/l/okjyj" target="_blank" class="nav-link">Toolkit</a>
+                    <a href="/blog" class="nav-link">Blog</a>
+                    <a href="/checklist" class="nav-link">Free Checklist</a>
+                    <a href="/calculator" class="nav-link">Calculator</a>
+                    <a href="/quiz" class="nav-link active">Business Quiz</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Quiz Section -->
+    <section class="quiz-section">
+        <div class="container">
+            <div class="quiz-container">
+                <div class="quiz-badge">
+                    🎯 FREE BUSINESS STRUCTURE QUIZ
+                </div>
+                <h1 class="quiz-title">
+                    What's My Ideal Business Structure?
+                </h1>
+                <p class="quiz-subtitle">
+                    Take our 5-question quiz to discover whether you should operate as a 
+                    Sole Proprietor, LLC, or S-Corp based on your income and business goals.
+                </p>
+                
+                <div class="quiz-widget">
+                    <form id="business-quiz" class="quiz-form">
+                        
+                        <!-- Question 1 -->
+                        <div class="question-group">
+                            <h3 class="question-title">
+                                <span class="question-number">1</span>
+                                What's your annual business income?
+                            </h3>
+                            <div class="quiz-options">
+                                <div class="quiz-option">
+                                    <input type="radio" id="q1a" name="income" value="under25k" class="option-input" required>
+                                    <label for="q1a" class="option-label">Under $25,000</label>
+                                </div>
+                                <div class="quiz-option">
+                                    <input type="radio" id="q1b" name="income" value="25k-50k" class="option-input">
+                                    <label for="q1b" class="option-label">$25,000 - $50,000</label>
+                                </div>
+                                <div class="quiz-option">
+                                    <input type="radio" id="q1c" name="income" value="50k-100k" class="option-input">
+                                    <label for="q1c" class="option-label">$50,000 - $100,000</label>
+                                </div>
+                                <div class="quiz-option">
+                                    <input type="radio" id="q1d" name="income" value="over100k" class="option-input">
+                                    <label for="q1d" class="option-label">Over $100,000</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Question 2 -->
+                        <div class="question-group">
+                            <h3 class="question-title">
+                                <span class="question-number">2</span>
+                                How important is liability protection for your business?
+                            </h3>
+                            <div class="quiz-options">
+                                <div class="quiz-option">
+                                    <input type="radio" id="q2a" name="liability" value="not-important" class="option-input" required>
+                                    <label for="q2a" class="option-label">Not important - low risk business</label>
+                                </div>
+                                <div class="quiz-option">
+                                    <input type="radio" id="q2b" name="liability" value="somewhat" class="option-input">
+                                    <label for="q2b" class="option-label">Somewhat important</label>
+                                </div>
+                                <div class="quiz-option">
+                                    <input type="radio" id="q2c" name="liability" value="very-important" class="option-input">
+                                    <label for="q2c" class="option-label">Very important - high risk or client-facing</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Question 3 -->
+                        <div class="question-group">
+                            <h3 class="question-title">
+                                <span class="question-number">3</span>
+                                How do you prefer to handle taxes and compliance?
+                            </h3>
+                            <div class="quiz-options">
+                                <div class="quiz-option">
+                                    <input type="radio" id="q3a" name="complexity" value="simple" class="option-input" required>
+                                    <label for="q3a" class="option-label">Keep it simple - minimal paperwork</label>
+                                </div>
+                                <div class="quiz-option">
+                                    <input type="radio" id="q3b" name="complexity" value="moderate" class="option-input">
+                                    <label for="q3b" class="option-label">Moderate complexity is fine for benefits</label>
+                                </div>
+                                <div class="quiz-option">
+                                    <input type="radio" id="q3c" name="complexity" value="complex" class="option-input">
+                                    <label for="q3c" class="option-label">I'll handle complexity for maximum tax savings</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Question 4 -->
+                        <div class="question-group">
+                            <h3 class="question-title">
+                                <span class="question-number">4</span>
+                                Do you plan to have employees or business partners?
+                            </h3>
+                            <div class="quiz-options">
+                                <div class="quiz-option">
+                                    <input type="radio" id="q4a" name="employees" value="no" class="option-input" required>
+                                    <label for="q4a" class="option-label">No - solo operation</label>
+                                </div>
+                                <div class="quiz-option">
+                                    <input type="radio" id="q4b" name="employees" value="maybe" class="option-input">
+                                    <label for="q4b" class="option-label">Maybe in the future</label>
+                                </div>
+                                <div class="quiz-option">
+                                    <input type="radio" id="q4c" name="employees" value="yes" class="option-input">
+                                    <label for="q4c" class="option-label">Yes - planning to grow team</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Question 5 -->
+                        <div class="question-group">
+                            <h3 class="question-title">
+                                <span class="question-number">5</span>
+                                What's your primary goal for business structure?
+                            </h3>
+                            <div class="quiz-options">
+                                <div class="quiz-option">
+                                    <input type="radio" id="q5a" name="goal" value="simple" class="option-input" required>
+                                    <label for="q5a" class="option-label">Keep things simple and cheap</label>
+                                </div>
+                                <div class="quiz-option">
+                                    <input type="radio" id="q5b" name="goal" value="protection" class="option-input">
+                                    <label for="q5b" class="option-label">Protect personal assets</label>
+                                </div>
+                                <div class="quiz-option">
+                                    <input type="radio" id="q5c" name="goal" value="tax-savings" class="option-input">
+                                    <label for="q5c" class="option-label">Maximize tax savings</label>
+                                </div>
+                                <div class="quiz-option">
+                                    <input type="radio" id="q5d" name="goal" value="credibility" class="option-input">
+                                    <label for="q5d" class="option-label">Professional credibility</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="submit-quiz-btn">
+                            Get My Business Structure Recommendation 🎯
+                        </button>
+                    </form>
+
+                    <!-- Results Section -->
+                    <div id="quiz-results" class="results-section">
+                        <h2 class="results-title">Your Recommended Business Structure</h2>
+                        
+                        <div id="recommendation-content" class="recommendation-card">
+                            <!-- Content will be dynamically inserted here -->
+                        </div>
+
+                        <!-- Full Report Email Capture -->
+                        <div class="full-report-section">
+                            <h3 class="report-title">Get Your Complete Business Structure Report</h3>
+                            <p class="report-subtitle">
+                                Receive a detailed analysis with step-by-step setup instructions, 
+                                tax implications, and legal considerations.
+                            </p>
+                            
+                            <div class="report-features">
+                                <div class="report-feature">
+                                    <span class="feature-icon">✓</span>
+                                    Detailed setup instructions
+                                </div>
+                                <div class="report-feature">
+                                    <span class="feature-icon">✓</span>
+                                    Tax implications breakdown
+                                </div>
+                                <div class="report-feature">
+                                    <span class="feature-icon">✓</span>
+                                    Annual compliance calendar
+                                </div>
+                                <div class="report-feature">
+                                    <span class="feature-icon">✓</span>
+                                    State-specific requirements
+                                </div>
+                            </div>
+                            
+                            <form id="full-report-form" class="report-form">
+                                <input type="email" class="report-input" placeholder="Enter your email" required>
+                                <input type="hidden" id="recommended-structure" name="recommendation" value="">
+                                <button type="submit" class="report-btn">Send Full Report</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">Ready to Optimize Your Business Structure?</h2>
+            <p class="cta-subtitle">Get professional help setting up your business the right way</p>
+            <div class="cta-buttons">
+                <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3Nqqg0NeTvGbTzo7olP5axJbp2FdtPGA9kzIeB0i-70EF5uo6Qy3kVj7vipm_3W9azofrf5_Kh" class="btn-primary">Get Professional Setup Help</a>
+                <a href="https://taxtok.gumroad.com/l/okjyj" class="btn-secondary">Get Tax Optimization Toolkit</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">&copy; 2025 TaxFix. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MVPRJK8S"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <!-- Quiz Logic JavaScript -->
+    <script>
+        // Business structure recommendations data
+        const recommendations = {
+            'sole_prop': {
+                title: '🏃‍♂️ Sole Proprietorship',
+                description: 'Based on your answers, a sole proprietorship is the best fit for your current situation. It\'s simple, cost-effective, and perfect for getting started.',
+                pros: [
+                    'Easiest and cheapest to set up',
+                    'Complete control over business',
+                    'Simple tax filing (Schedule C)',
+                    'No separate business tax return',
+                    'Minimal ongoing compliance'
+                ],
+                cons: [
+                    'No liability protection',
+                    'All business income subject to self-employment tax',
+                    'Less professional credibility',
+                    'Harder to raise capital',
+                    'Business dies with owner'
+                ]
+            },
+            'llc': {
+                title: '🛡️ Limited Liability Company (LLC)',
+                description: 'An LLC offers the perfect balance of protection and simplicity for your business. You get liability protection without complex tax requirements.',
+                pros: [
+                    'Personal asset protection',
+                    'Tax flexibility (pass-through or corporate)',
+                    'Professional credibility',
+                    'Relatively simple to maintain',
+                    'Can have multiple owners'
+                ],
+                cons: [
+                    'State filing fees and annual reports',
+                    'More paperwork than sole prop',
+                    'Self-employment tax on all profits',
+                    'Varies by state regulations',
+                    'May need operating agreement'
+                ]
+            },
+            's_corp': {
+                title: '💼 S-Corporation Election',
+                description: 'With your income level and tax optimization goals, an S-Corp election could save you significant money on self-employment taxes.',
+                pros: [
+                    'Major self-employment tax savings',
+                    'Pass-through taxation (no double tax)',
+                    'Easy to transfer ownership',
+                    'Professional credibility',
+                    'Can have up to 100 shareholders'
+                ],
+                cons: [
+                    'Must pay yourself reasonable salary',
+                    'More complex bookkeeping',
+                    'Separate tax return required',
+                    'Strict IRS requirements',
+                    'Limited to US residents only'
+                ]
+            }
+        };
+
+        document.getElementById('business-quiz').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const income = formData.get('income');
+            const liability = formData.get('liability');
+            const complexity = formData.get('complexity');
+            const employees = formData.get('employees');
+            const goal = formData.get('goal');
+            
+            // Calculate recommendation based on answers
+            let recommendation = calculateRecommendation(income, liability, complexity, employees, goal);
+            
+            // Display results
+            displayRecommendation(recommendation);
+            
+            // Store recommendation for email capture
+            document.getElementById('recommended-structure').value = recommendation;
+            
+            // Show results section
+            document.getElementById('quiz-results').style.display = 'block';
+            document.getElementById('quiz-results').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        function calculateRecommendation(income, liability, complexity, employees, goal) {
+            let score = {
+                sole_prop: 0,
+                llc: 0,
+                s_corp: 0
+            };
+
+            // Income scoring
+            switch(income) {
+                case 'under25k':
+                    score.sole_prop += 3;
+                    score.llc += 1;
+                    break;
+                case '25k-50k':
+                    score.sole_prop += 2;
+                    score.llc += 2;
+                    score.s_corp += 1;
+                    break;
+                case '50k-100k':
+                    score.sole_prop += 1;
+                    score.llc += 2;
+                    score.s_corp += 2;
+                    break;
+                case 'over100k':
+                    score.llc += 1;
+                    score.s_corp += 3;
+                    break;
+            }
+
+            // Liability protection scoring
+            switch(liability) {
+                case 'not-important':
+                    score.sole_prop += 2;
+                    break;
+                case 'somewhat':
+                    score.llc += 2;
+                    score.s_corp += 1;
+                    break;
+                case 'very-important':
+                    score.llc += 2;
+                    score.s_corp += 2;
+                    break;
+            }
+
+            // Complexity preference scoring
+            switch(complexity) {
+                case 'simple':
+                    score.sole_prop += 3;
+                    break;
+                case 'moderate':
+                    score.llc += 3;
+                    break;
+                case 'complex':
+                    score.s_corp += 3;
+                    break;
+            }
+
+            // Employees/partners scoring
+            switch(employees) {
+                case 'no':
+                    score.sole_prop += 1;
+                    score.llc += 1;
+                    break;
+                case 'maybe':
+                    score.llc += 2;
+                    score.s_corp += 1;
+                    break;
+                case 'yes':
+                    score.llc += 1;
+                    score.s_corp += 2;
+                    break;
+            }
+
+            // Goal scoring
+            switch(goal) {
+                case 'simple':
+                    score.sole_prop += 3;
+                    break;
+                case 'protection':
+                    score.llc += 3;
+                    score.s_corp += 1;
+                    break;
+                case 'tax-savings':
+                    score.s_corp += 3;
+                    score.llc += 1;
+                    break;
+                case 'credibility':
+                    score.llc += 2;
+                    score.s_corp += 2;
+                    break;
+            }
+
+            // Return the structure with highest score
+            let maxScore = Math.max(score.sole_prop, score.llc, score.s_corp);
+            
+            if (score.s_corp === maxScore) return 's_corp';
+            if (score.llc === maxScore) return 'llc';
+            return 'sole_prop';
+        }
+
+        function displayRecommendation(recommendation) {
+            const data = recommendations[recommendation];
+            const content = document.getElementById('recommendation-content');
+            
+            content.innerHTML = `
+                <h3 class="recommendation-title">
+                    <span class="recommendation-icon">${data.title.split(' ')[0]}</span>
+                    ${data.title.substring(data.title.indexOf(' ') + 1)}
+                </h3>
+                <p class="recommendation-description">${data.description}</p>
+                <div class="pros-cons">
+                    <div class="pros">
+                        <h4>✅ Advantages</h4>
+                        <ul>
+                            ${data.pros.map(pro => `<li>${pro}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h4>⚠️ Considerations</h4>
+                        <ul>
+                            ${data.cons.map(con => `<li>${con}</li>`).join('')}
+                        </ul>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Handle full report email capture
+        document.getElementById('full-report-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = this.querySelector('input[type="email"]').value;
+            const recommendation = document.getElementById('recommended-structure').value;
+            
+            // Here you would send this to your email service
+            alert(`Thanks! We're sending your detailed ${recommendation.replace('_', ' ').toUpperCase()} setup guide to ${email}.`);
+            
+            // Track the conversion
+            // Handled by optimized analytics });
+    </script>
+</body>
+</html>

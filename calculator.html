@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Tax Savings Calculator for Gig Workers | TaxFix</title>
+    <meta name="description" content="Free calculator to estimate your potential tax savings as a gig worker. Get personalized results and expert recommendations in under 2 minutes.">
+    <meta name="keywords" content="tax savings calculator, gig worker taxes, freelancer tax calculator, 1099 tax savings">
+    
+    <!-- DNS Prefetch for performance -->
+    <link rel="dns-prefetch" href="//www.googletagmanager.com">
+    <link rel="dns-prefetch" href="//analytics.tiktok.com">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    
+    <!-- Preconnect to critical resources -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+
+    <!-- Optimized Analytics (loads after page load) -->
+    <script defer src="js/optimized-analytics.min.js"></script>
+
+    
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    // Handled by optimized analytics );
+    // Handled by optimized analytics </script>
+
+    
+    
+    <link rel="stylesheet" href="styles.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header-main">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo-link">
+                    <picture>
+                        <source srcset="TaxFixLogo-optimized.webp" type="image/webp">
+                        <img src="TaxFixLogo-optimized.png" alt="TaxFix - Keep More, Cry Less" class="logo" width="170" height="80" loading="eager" fetchpriority="high">
+                    </picture>
+                </a>
+                <nav class="main-nav">
+                    <a href="/hiddenprofitfinder" class="nav-cta-button">Find Hidden Profits FREE</a>
+                    <a href="https://taxtok.gumroad.com/l/okjyj" target="_blank" class="nav-link">Toolkit</a>
+                    <a href="/blog" class="nav-link">Blog</a>
+                    <a href="/checklist" class="nav-link">Free Checklist</a>
+                    <a href="/quiz" class="nav-link">Business Quiz</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Calculator Section -->
+    <section class="calculator-section">
+        <div class="container">
+            <div class="calculator-container">
+                <h1 class="page-title">Quick Tax Savings Calculator</h1>
+                <p class="page-subtitle">
+                    Discover how much you could save on taxes as a gig worker. 
+                    Get your personalized estimate in under 2 minutes.
+                </p>
+                
+                <div class="calculator-widget">
+                    <form id="tax-calculator" class="calculator-form">
+                        <div class="form-group">
+                            <label for="annual-income" class="form-label">Annual Gig Income</label>
+                            <input type="number" id="annual-income" class="form-input" placeholder="50000" min="1000" max="1000000" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="work-type" class="form-label">Primary Gig Work Type</label>
+                            <select id="work-type" class="form-select" required>
+                                <option value="">Select your work type</option>
+                                <option value="rideshare">Rideshare (Uber, Lyft)</option>
+                                <option value="delivery">Food Delivery (DoorDash, UberEats)</option>
+                                <option value="freelance">Freelancing (Writing, Design)</option>
+                                <option value="ecommerce">E-commerce (Etsy, Amazon)</option>
+                                <option value="consulting">Consulting/Services</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="current-deductions" class="form-label">Current Annual Tax Deductions</label>
+                            <select id="current-deductions" class="form-select" required>
+                                <option value="">Select closest amount</option>
+                                <option value="0">$0 - I don't track deductions</option>
+                                <option value="2000">$2,000 - Basic vehicle expenses</option>
+                                <option value="5000">$5,000 - Some business expenses</option>
+                                <option value="8000">$8,000 - Most business expenses</option>
+                                <option value="12000">$12,000+ - Comprehensive tracking</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="calculate-btn">
+                            Calculate My Tax Savings 💰
+                        </button>
+                    </form>
+                    
+                    <div id="results" class="results-section">
+                        <h3 class="results-title">Your Estimated Tax Savings</h3>
+                        <div class="results-grid">
+                            <div class="result-item">
+                                <div id="potential-savings" class="result-value">$0</div>
+                                <div class="result-label">Potential Annual Savings</div>
+                            </div>
+                            <div class="result-item">
+                                <div id="missed-deductions" class="result-value">$0</div>
+                                <div class="result-label">Missed Deductions</div>
+                            </div>
+                            <div class="result-item">
+                                <div id="tax-bracket" class="result-value">0%</div>
+                                <div class="result-label">Estimated Tax Bracket</div>
+                            </div>
+                        </div>
+                        
+                        <div class="email-capture-section">
+                            <h4 class="email-capture-title">Want Personalized Tax Optimization?</h4>
+                            <p class="email-capture-subtitle">
+                                Get a comprehensive breakdown of exactly which deductions you're missing, 
+                                plus step-by-step instructions to claim them with our Hidden Profit Finder.
+                            </p>
+                            <div class="cta-buttons" style="margin-top: 1.5rem;">
+                                <a href="/hiddenprofitfinder" class="btn-primary" style="display: inline-block; padding: 1rem 2rem; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; text-decoration: none; border-radius: 0.5rem; font-weight: 600; margin-right: 1rem; margin-bottom: 0.5rem;">
+                                    Get Personalized Analysis
+                                </a>
+                                <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3Nqqg0NeTvGbTzo7olP5axJbp2FdtPGA9kzIeB0i-70EF5uo6Qy3kVj7vipm_3W9azofrf5_Kh" class="btn-secondary" style="display: inline-block; padding: 1rem 2rem; background: transparent; color: #5DADE2; border: 2px solid #5DADE2; text-decoration: none; border-radius: 0.5rem; font-weight: 600;">
+                                    Get Expert Help
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">Ready to Maximize Your Tax Savings?</h2>
+            <p class="cta-subtitle">Get the complete toolkit to claim every deduction you're entitled to</p>
+            <div class="cta-buttons">
+                <a href="https://taxtok.gumroad.com/l/okjyj" class="btn-primary">Get Tax Fix Pack - $29</a>
+                <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3Nqqg0NeTvGbTzo7olP5axJbp2FdtPGA9kzIeB0i-70EF5uo6Qy3kVj7vipm_3W9azofrf5_Kh" class="btn-secondary">Get Professional Help</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">&copy; 2025 TaxFix. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MVPRJK8S"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <!-- Calculator JavaScript -->
+    <script>
+        document.getElementById('tax-calculator').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const income = parseFloat(document.getElementById('annual-income').value);
+            const workType = document.getElementById('work-type').value;
+            const currentDeductions = parseFloat(document.getElementById('current-deductions').value);
+            
+            // Calculate potential deductions based on work type and income
+            let potentialDeductions = 0;
+            
+            switch(workType) {
+                case 'rideshare':
+                    potentialDeductions = Math.min(income * 0.25, 15000); // 25% or max $15k
+                    break;
+                case 'delivery':
+                    potentialDeductions = Math.min(income * 0.22, 13000);
+                    break;
+                case 'freelance':
+                    potentialDeductions = Math.min(income * 0.18, 10000);
+                    break;
+                case 'ecommerce':
+                    potentialDeductions = Math.min(income * 0.20, 12000);
+                    break;
+                case 'consulting':
+                    potentialDeductions = Math.min(income * 0.15, 8000);
+                    break;
+                default:
+                    potentialDeductions = Math.min(income * 0.20, 10000);
+            }
+            
+            const missedDeductions = Math.max(0, potentialDeductions - currentDeductions);
+            const taxBracket = income < 44725 ? 12 : income < 95375 ? 22 : income < 182050 ? 24 : 32;
+            const potentialSavings = Math.round(missedDeductions * (taxBracket + 15.3) / 100); // Include self-employment tax
+            
+            // Update results
+            document.getElementById('potential-savings').textContent = '$' + potentialSavings.toLocaleString();
+            document.getElementById('missed-deductions').textContent = '$' + Math.round(missedDeductions).toLocaleString();
+            document.getElementById('tax-bracket').textContent = taxBracket + '%';
+            
+            // Store values for email capture
+            document.getElementById('savings-amount').value = potentialSavings;
+            document.getElementById('income-amount').value = income;
+            document.getElementById('work-type-hidden').value = workType;
+            
+            // Show results
+            document.getElementById('results').style.display = 'block';
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+
+        // Calculator now directs to Hidden Profit Finder for lead capture
+        // No email collection on calculator page
+    </script>
+</body>
+</html>

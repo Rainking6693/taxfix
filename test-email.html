@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Email Function</title>
+</head>
+<body>
+    <h1>Test Email Function</h1>
+    <form id="testForm">
+        <input type="email" name="email" placeholder="Your email" required>
+        <input type="text" name="businessType" value="uber-lyft">
+        <input type="text" name="incomeRange" value="1000-3000">
+        <input type="text" name="trackExpenses" value="no">
+        <input type="text" name="expenseTrackingMethod" value="paper">
+        <input type="text" name="businessStructure" value="sole-proprietor">
+        <input type="text" name="workState" value="California">
+        <button type="submit">Test Email</button>
+    </form>
+    
+    <div id="result"></div>
+    
+    <script>
+        document.getElementById('testForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const result = document.getElementById('result');
+            result.innerHTML = 'Sending...';
+            
+            try {
+                const response = await fetch('/.netlify/functions/send-welcome-email', {
+                    method: 'POST',
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: new URLSearchParams(formData).toString()
+                });
+                
+                const responseText = await response.text();
+                result.innerHTML = `
+                    <h3>Response:</h3>
+                    <p>Status: ${response.status}</p>
+                    <p>Response: ${responseText}</p>
+                `;
+                
+                console.log('Full response:', response);
+                console.log('Response text:', responseText);
+                
+            } catch (error) {
+                result.innerHTML = `<p>Error: ${error.message}</p>`;
+                console.error('Error:', error);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+# Netlify Configuration for TaxFix
+# Performance optimizations and build settings
+
+[build]
+  publish = "."
+  command = "echo 'No build command needed - static site'"
+
+# Build optimization
+[build.environment]
+  NODE_VERSION = "18"
+
+# Performance optimizations
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"  
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.gif"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, must-revalidate"
+
+# Critical SEO files - No caching to ensure immediate updates
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+    Pragma = "no-cache"
+    Expires = "0"
+
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+    Pragma = "no-cache"
+    Expires = "0"
+
+[[headers]]
+  for = "/service-worker.js"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+# Asset optimization - DISABLED to prevent SEO file corruption
+[build.processing]
+  skip_processing = true
+
+# Redirects for SEO
+[[redirects]]
+  from = "/index.htm"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/home"
+  to = "/"
+  status = 301
+
+# Local SEO redirects
+[[redirects]]
+  from = "/salt-lake-city-tax-services"
+  to = "/salt-lake-city-tax-help"
+  status = 301
+
+[[redirects]]  
+  from = "/utah-tax-help"
+  to = "/utah-gig-worker-accounting"
+  status = 301
+
+[[redirects]]
+  from = "/provo-tax-services" 
+  to = "/provo-freelance-bookkeeping"
+  status = 301
+
+[[redirects]]
+  from = "/ogden-tax-services"
+  to = "/ogden-tax-preparation"
+  status = 301
+
+# Blog redirects
+[[redirects]]
+  from = "/blog/index.htm"
+  to = "/blog/"
+  status = 301
+
+# API endpoints (if needed in future)
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+# SPA fallback for client-side routing (if needed)
+# Commented out - was causing 404 errors for non-admin users
+# [[redirects]]
+#   from = "/*"
+#   to = "/index.html"
+#   status = 200
+#   conditions = {Role = ["admin"]}
+
+# Form handling - Configure notifications in Netlify Dashboard
+# Go to: Site Settings > Forms > Form notifications
+# Forms will be auto-detected from HTML data-netlify="true" attributes
+
+# Edge functions for performance (Netlify Edge) - DISABLED for debugging
+# [[edge_functions]]
+#   function = "performance"
+#   path = "/*"
+
+# Environment variables for production
+[context.production.environment]
+  NODE_ENV = "production"
+  GATSBY_ENV = "production"
+
+# Branch deploy settings
+[context.branch-deploy]
+  command = "echo 'Branch deploy'"
+
+[context.deploy-preview]
+  command = "echo 'Deploy preview'"
+
+# Plugin configuration for additional optimizations (disabled due to deployment issues)
+# [[plugins]]
+#   package = "@netlify/plugin-lighthouse"
+#   [plugins.inputs]
+#     audits = ["performance", "accessibility", "seo"]
+#     thresholds = { "performance" = 0.8, "accessibility" = 0.9, "seo" = 0.9 }
+
+# Split testing (A/B testing) configuration
+[split_test]
+  [split_test.settings]
+    variation_cookie_max_age = 86400

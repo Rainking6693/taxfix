@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template Request Received - TaxFix</title>
+    <meta name="description" content="Your free tax template request has been received. Check your email for your download.">
+    
+    <link rel="stylesheet" href="styles.min.css">
+    
+    <script>
+        // Auto-redirect after 10 seconds
+        setTimeout(function() {
+            window.location.href = '/resources';
+        }, 10000);
+        
+        // Track success page view
+        if (typeof gtag !== 'undefined') {
+            // Handled by optimized analytics }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="success-card">
+            <div class="success-icon">🎉</div>
+            <h1 class="success-title">Request Received!</h1>
+            <p class="success-message">
+                Thanks for requesting your free tax template! We're preparing your download and you should receive it in your inbox within the next few minutes.
+            </p>
+            
+            <div class="next-steps">
+                <h3>📧 What Happens Next:</h3>
+                <ul>
+                    <li>Check your email (including spam folder) for your template</li>
+                    <li>Download and open the Excel file</li>
+                    <li>Follow the included instructions to get started</li>
+                    <li>Begin tracking immediately for best results</li>
+                </ul>
+            </div>
+            
+            <div class="cta-buttons">
+                <a href="https://taxtok.gumroad.com/l/okjyj" class="btn btn-primary" target="_blank">
+                    🚀 Get Complete Tax Fix Pack
+                </a>
+                <a href="/resources" class="btn btn-secondary">
+                    📚 Browse More Resources
+                </a>
+            </div>
+            
+            <div class="footer">
+                <p>Didn't receive your email? Check your spam folder or contact us at support@tax-fix.org</p>
+                <p style="margin-top: 0.5rem;">Redirecting to resources page in 10 seconds...</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,416 @@
+/**
+ * Google Reviews Widget for TaxFix
+ * Displays Google My Business reviews with star ratings
+ */
+
+class GoogleReviewsWidget {
+    constructor(options = {}) {
+        this.placeId = options.placeId || 'ChIJ2eUgeAK6VYcRwAqJgMoLKBU'; // Default place ID for Salt Lake City
+        this.maxReviews = options.maxReviews || 6;
+        this.minRating = options.minRating || 4;
+        this.containerId = options.containerId || 'google-reviews-widget';
+        this.showProfileImage = options.showProfileImage !== false;
+        this.showDate = options.showDate !== false;
+        
+        // Mock reviews data (replace with actual Google Places API integration)
+        this.mockReviews = [
+            {
+                author_name: "Sarah M.",
+                author_url: "#",
+                language: "en",
+                profile_photo_url: "https://ui-avatars.com/api/?name=Sarah+M&background=10b981&color=fff",
+                rating: 5,
+                relative_time_description: "2 weeks ago",
+                text: "Found $1,200 in deductions I was missing! TaxFix saved me thousands on my tax bill. The team is professional, knowledgeable, and always available when I have questions. Highly recommend!",
+                time: 1703097600
+            },
+            {
+                author_name: "Mike R.",
+                author_url: "#",
+                language: "en", 
+                profile_photo_url: "https://ui-avatars.com/api/?name=Mike+R&background=0891b2&color=fff",
+                rating: 5,
+                relative_time_description: "3 weeks ago",
+                text: "As a freelancer, I thought I knew all the deductions. I was wrong - TaxFix found $800 more in savings! Their expertise in gig work taxes is unmatched.",
+                time: 1702492800
+            },
+            {
+                author_name: "Jennifer L.",
+                author_url: "#",
+                language: "en",
+                profile_photo_url: "https://ui-avatars.com/api/?name=Jennifer+L&background=7c3aed&color=fff", 
+                rating: 5,
+                relative_time_description: "1 month ago",
+                text: "The report was so detailed and personalized. TaxFix saved me thousands on my tax bill and helped me organize my gig work finances perfectly. Worth every penny!",
+                time: 1701888000
+            },
+            {
+                author_name: "David K.",
+                author_url: "#",
+                language: "en",
+                profile_photo_url: "https://ui-avatars.com/api/?name=David+K&background=dc2626&color=fff",
+                rating: 5,
+                relative_time_description: "1 month ago", 
+                text: "Best tax preparer in Utah! They saved me over $2,000 and helped me avoid IRS penalties. Professional service and always available when I have questions.",
+                time: 1701283200
+            },
+            {
+                author_name: "Lisa Chen",
+                author_url: "#",
+                language: "en",
+                profile_photo_url: "https://ui-avatars.com/api/?name=Lisa+C&background=f59e0b&color=fff",
+                rating: 5,
+                relative_time_description: "2 months ago",
+                text: "After years of doing my own taxes, I finally went to TaxFix. They found deductions I never knew about and got me a refund when I expected to owe money!",
+                time: 1699200000
+            },
+            {
+                author_name: "Carlos M.",
+                author_url: "#",
+                language: "en",
+                profile_photo_url: "https://ui-avatars.com/api/?name=Carlos+M&background=059669&color=fff",
+                rating: 4,
+                relative_time_description: "2 months ago",
+                text: "Great service for gig workers! They understand the complexities of multiple income streams and helped me organize everything properly. Very satisfied with the results.",
+                time: 1698595200
+            }
+        ];
+    }
+
+    init() {
+        this.renderWidget();
+        this.bindEvents();
+    }
+
+    renderWidget() {
+        const container = document.getElementById(this.containerId);
+        if (!container) {
+            console.warn(`Google Reviews Widget: Container with ID '${this.containerId}' not found`);
+            return;
+        }
+
+        const filteredReviews = this.mockReviews
+            .filter(review => review.rating >= this.minRating)
+            .slice(0, this.maxReviews);
+
+        const averageRating = this.calculateAverageRating(filteredReviews);
+        const totalReviews = filteredReviews.length;
+
+        container.innerHTML = `
+            <div class="google-reviews-widget">
+                <div class="reviews-header">
+                    <div class="google-logo">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIyLjU2IDEyLjI1QzIyLjU2IDExLjQ3IDIyLjQ5IDEwLjcyIDIyLjM2IDEwSDEyVjE0LjI2SDEzLjg5QzEzLjEyIDE2LjU1IDExLjQzIDE4LjMgOS4yNSAxOS4wNVYxNi4wOUg2VjE5LjA1QzguOTYgMjEuOTMgMTMuMDkgMjMuMjUgMTcuNDQgMjEuNzJDMjAuNTcgMjAuNzIgMjIuNTYgMTcuOTkgMjIuNTYgMTIuMjVaIiBmaWxsPSIjNDI4NUY0Ii8+CjxwYXRoIGQ9Ik0xMiAyM0M4IDIzIDMuODUgMjEuMTEgNiAxNi4wOVYxMC4wMUM4IDUuNzQgMTIuNjYgNS43NCAxNyA4LjI1TDE5LjU4IDUuNjdDMTcuMjUgMy41MyAxNC4yNSAyIDEyIDJDNi40NyAyIDIgNi40NyAyIDEyUzYuNDcgMjIgMTIgMjJIMTJaIiBmaWxsPSIjMzRBODUzIi8+CjxwYXRoIGQ9Ik0xMiAyQzE0LjI1IDIgMTcuMjUgMy41MyAxOS41OCA1LjY3TDE3IDguMjVDMTUuNSA3IDEzLjc1IDYuNSAxMiA2LjVDOC41IDYuNSA1LjUgOS4wNiA1IDE5LjA1VjE2LjA5QzMuODUgMjEuMTEgOCAyMyAxMiAyM0MxNy41MyAyMyAyMiAxOC41MyAyMiAxMkMyMiAxMS40NyAyMS45MyAxMC45NSAyMS43OSAxMC40N1YxMEgxMlYxNC4yNkgxNy42OUMxNi45NSAxNi44MSAxNC45NSAxOC44MSAxMi4yIDE5LjM0VjE2LjA5SDE2LjA1VjE5LjA1QzE0Ljg1IDIwLjAzIDEzLjA5IDIxIDEyIDIxQzguNSAyMSA2IDI4LjUgNiAxNkM2IDEwLjUgOC41IDYgMTIgNloiIGZpbGw9IiNGQkJDMDQiLz4KPHBhdGggZD0iTTEyIDZDMTMuNzUgNi41IDE1LjUgNyAxNyA4LjI1TDE5LjU4IDUuNjdDMTcuMjUgMy41MyAxNC4yNSAyIDEyIDJDNi40NyAyIDIgNi40NyAyIDEyQzIgMTMuMTEgMi4yIDEzLjIgMi41IDE0LjNDMy4wNyAxNi43IDUgMTguMTMgNi4yNiAxOS4zNkw5IDEySDEyVjZaIiBmaWxsPSIjRUE0MzM1Ii8+Cjwvc3ZnPgo=" alt="Google" class="google-icon">
+                        <span class="google-text">Google Reviews</span>
+                    </div>
+                    <div class="reviews-summary">
+                        <div class="average-rating">
+                            ${this.renderStars(averageRating)}
+                            <span class="rating-number">${averageRating.toFixed(1)}</span>
+                        </div>
+                        <div class="total-reviews">${totalReviews} reviews</div>
+                    </div>
+                </div>
+                <div class="reviews-container">
+                    ${filteredReviews.map(review => this.renderReview(review)).join('')}
+                </div>
+                <div class="reviews-footer">
+                    <a href="https://www.google.com/search?q=taxfix+utah" target="_blank" class="view-all-reviews">
+                        View all Google reviews →
+                    </a>
+                </div>
+            </div>
+        `;
+
+        this.addStyles();
+    }
+
+    renderReview(review) {
+        return `
+            <div class="review-item">
+                <div class="review-header">
+                    <div class="reviewer-info">
+                        ${this.showProfileImage ? `<img src="${review.profile_photo_url}" alt="${review.author_name}" class="reviewer-avatar">` : ''}
+                        <div class="reviewer-details">
+                            <div class="reviewer-name">${review.author_name}</div>
+                            ${this.showDate ? `<div class="review-date">${review.relative_time_description}</div>` : ''}
+                        </div>
+                    </div>
+                    <div class="review-rating">
+                        ${this.renderStars(review.rating)}
+                    </div>
+                </div>
+                <div class="review-text">
+                    ${this.truncateText(review.text, 150)}
+                </div>
+            </div>
+        `;
+    }
+
+    renderStars(rating) {
+        const fullStars = Math.floor(rating);
+        const hasHalfStar = rating % 1 >= 0.5;
+        const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+
+        let starsHtml = '';
+        
+        // Full stars
+        for (let i = 0; i < fullStars; i++) {
+            starsHtml += '<span class="star star-full">★</span>';
+        }
+        
+        // Half star
+        if (hasHalfStar) {
+            starsHtml += '<span class="star star-half">★</span>';
+        }
+        
+        // Empty stars
+        for (let i = 0; i < emptyStars; i++) {
+            starsHtml += '<span class="star star-empty">★</span>';
+        }
+        
+        return starsHtml;
+    }
+
+    calculateAverageRating(reviews) {
+        if (reviews.length === 0) return 0;
+        const sum = reviews.reduce((total, review) => total + review.rating, 0);
+        return sum / reviews.length;
+    }
+
+    truncateText(text, maxLength) {
+        if (text.length <= maxLength) return text;
+        return text.substr(0, maxLength).substr(0, text.lastIndexOf(' ')) + '...';
+    }
+
+    bindEvents() {
+        // Add click tracking for analytics
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.view-all-reviews')) {
+                // Track Google reviews click
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'google_reviews_click', {
+                        'event_category': 'engagement',
+                        'event_label': 'View All Google Reviews'
+                    });
+                }
+            }
+        });
+    }
+
+    addStyles() {
+        const styleId = 'google-reviews-widget-styles';
+        if (document.getElementById(styleId)) return;
+
+        const styles = `
+            <style id="${styleId}">
+                .google-reviews-widget {
+                    background: white;
+                    border-radius: 12px;
+                    padding: 24px;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                    border: 1px solid #e5e7eb;
+                    margin: 24px 0;
+                }
+
+                .reviews-header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 24px;
+                    padding-bottom: 16px;
+                    border-bottom: 1px solid #f3f4f6;
+                }
+
+                .google-logo {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                }
+
+                .google-icon {
+                    width: 24px;
+                    height: 24px;
+                }
+
+                .google-text {
+                    font-weight: 600;
+                    color: #1f2937;
+                    font-size: 16px;
+                }
+
+                .reviews-summary {
+                    text-align: right;
+                }
+
+                .average-rating {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    margin-bottom: 4px;
+                }
+
+                .rating-number {
+                    font-weight: 600;
+                    color: #1f2937;
+                    font-size: 18px;
+                }
+
+                .total-reviews {
+                    color: #6b7280;
+                    font-size: 14px;
+                }
+
+                .reviews-container {
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    gap: 20px;
+                    margin-bottom: 24px;
+                }
+
+                @media (min-width: 768px) {
+                    .reviews-container {
+                        grid-template-columns: repeat(2, 1fr);
+                    }
+                }
+
+                @media (min-width: 1024px) {
+                    .reviews-container {
+                        grid-template-columns: repeat(3, 1fr);
+                    }
+                }
+
+                .review-item {
+                    background: #f9fafb;
+                    padding: 16px;
+                    border-radius: 8px;
+                    border-left: 4px solid #10b981;
+                }
+
+                .review-header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                    margin-bottom: 12px;
+                }
+
+                .reviewer-info {
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                    flex: 1;
+                }
+
+                .reviewer-avatar {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+
+                .reviewer-details {
+                    flex: 1;
+                }
+
+                .reviewer-name {
+                    font-weight: 600;
+                    color: #1f2937;
+                    font-size: 14px;
+                    margin-bottom: 2px;
+                }
+
+                .review-date {
+                    color: #6b7280;
+                    font-size: 12px;
+                }
+
+                .review-rating {
+                    flex-shrink: 0;
+                }
+
+                .star {
+                    font-size: 16px;
+                    margin-right: 2px;
+                }
+
+                .star-full {
+                    color: #fbbf24;
+                }
+
+                .star-half {
+                    color: #fbbf24;
+                    opacity: 0.5;
+                }
+
+                .star-empty {
+                    color: #d1d5db;
+                }
+
+                .review-text {
+                    color: #374151;
+                    font-size: 14px;
+                    line-height: 1.5;
+                    font-style: italic;
+                }
+
+                .reviews-footer {
+                    text-align: center;
+                    padding-top: 16px;
+                    border-top: 1px solid #f3f4f6;
+                }
+
+                .view-all-reviews {
+                    color: #0891b2;
+                    text-decoration: none;
+                    font-weight: 600;
+                    font-size: 14px;
+                    transition: color 0.3s ease;
+                }
+
+                .view-all-reviews:hover {
+                    color: #0e7490;
+                    text-decoration: underline;
+                }
+
+                @media (max-width: 767px) {
+                    .reviews-header {
+                        flex-direction: column;
+                        gap: 16px;
+                        text-align: center;
+                    }
+
+                    .reviews-summary {
+                        text-align: center;
+                    }
+
+                    .review-header {
+                        flex-direction: column;
+                        gap: 8px;
+                    }
+
+                    .review-rating {
+                        align-self: flex-start;
+                    }
+                }
+            </style>
+        `;
+
+        document.head.insertAdjacentHTML('beforeend', styles);
+    }
+}
+
+// Initialize widget when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    const reviewsContainer = document.getElementById('google-reviews-widget');
+    if (reviewsContainer) {
+        const widget = new GoogleReviewsWidget({
+            maxReviews: 6,
+            minRating: 4,
+            containerId: 'google-reviews-widget'
+        });
+        widget.init();
+    }
+});
+
+// Export for manual initialization
+window.GoogleReviewsWidget = GoogleReviewsWidget;

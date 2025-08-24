@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelance Tax Help - TaxFix</title>
+    <meta name="description" content="Expert tax help for freelancers. Maximize deductions, minimize taxes. Professional freelancer tax services with guaranteed results.">
+    
+    <!-- Auto-redirect after 5 seconds -->
+    <meta http-equiv="refresh" content="5;url=https://tax-fix.org/">
+    
+    <!-- DNS Prefetch for performance -->
+    <link rel="dns-prefetch" href="//www.googletagmanager.com">
+    <link rel="dns-prefetch" href="//analytics.tiktok.com">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    
+    <!-- Preconnect to critical resources -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+
+    <!-- Optimized Analytics (loads after page load) -->
+    <script defer src="js/optimized-analytics.min.js"></script>
+
+    <link rel="stylesheet" href="styles.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">💼</div>
+        <h1>Freelance Tax Help</h1>
+        <p class="subtitle">Expert tax services designed specifically for freelancers</p>
+        
+        <div class="benefits">
+            <div class="benefit">
+                <div class="benefit-icon">💰</div>
+                <div class="benefit-text">Maximize your deductions and save thousands</div>
+            </div>
+            <div class="benefit">
+                <div class="benefit-icon">📊</div>
+                <div class="benefit-text">Professional tax preparation & planning</div>
+            </div>
+            <div class="benefit">
+                <div class="benefit-icon">⚡</div>
+                <div class="benefit-text">Fast, accurate, and affordable services</div>
+            </div>
+            <div class="benefit">
+                <div class="benefit-icon">🛡️</div>
+                <div class="benefit-text">Audit protection and expert support</div>
+            </div>
+        </div>
+        
+        <div class="countdown">
+            <div class="countdown-text">Redirecting to TaxFix in:</div>
+            <div class="countdown-timer" id="countdown">5</div>
+        </div>
+    </div>
+    
+    <a href="https://tax-fix.org/" class="skip-link">Skip to TaxFix →</a>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MVPRJK8S"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <script>
+        // Countdown timer
+        let timeLeft = 5;
+        const countdownElement = document.getElementById('countdown');
+        
+        const timer = setInterval(() => {
+            timeLeft--;
+            countdownElement.textContent = timeLeft;
+            
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                window.location.href = 'https://tax-fix.org/';
+            }
+        }, 1000);
+
+        // Track landing page view
+        if (typeof gtag !== 'undefined') {
+            // Handled by optimized analytics }
+
+        // Track if user manually clicks to skip
+        document.querySelector('.skip-link').addEventListener('click', function() {
+            if (typeof gtag !== 'undefined') {
+                // Handled by optimized analytics }
+        });
+    </script>
+</body>
+</html>
