@@ -1,0 +1,66 @@
+# Robots.txt for tax-fix.org - SEO Optimized
+# Last updated: 2025-08-19
+
+# Allow all legitimate search engines full access
+User-agent: *
+Allow: /
+Allow: /blog/
+Allow: /resources/
+Allow: /calculator/
+Allow: /checklist/
+Allow: /guides/
+Allow: /services/
+Allow: /sitemap.xml
+Allow: /*.html$
+Allow: /*.css$
+Allow: /*.js$
+Allow: /images/
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.webp$
+
+# Only block truly private/admin areas
+Disallow: /admin/
+Disallow: /_netlify/
+Disallow: /netlify/functions/
+Disallow: /email-templates/
+Disallow: /*.py$
+Disallow: /*.xlsx$
+Disallow: /test-email.html
+
+# Sitemap location - CRITICAL for SEO
+Sitemap: https://tax-fix.org/sitemap.xml
+
+# Major search engines - Give them priority access
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot  
+Allow: /
+Crawl-delay: 0
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 0
+
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 0
+
+# Block aggressive/unwanted bots only
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
