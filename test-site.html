@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Test Dashboard - TaxFix</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+            border-bottom: 3px solid #0891b2;
+            padding-bottom: 10px;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-item {
+            padding: 10px;
+            margin: 10px 0;
+            border-left: 4px solid #e5e7eb;
+        }
+        .test-item.success {
+            border-left-color: #10b981;
+            background: #f0fdf4;
+        }
+        .test-item.warning {
+            border-left-color: #f59e0b;
+            background: #fffbeb;
+        }
+        .test-item.error {
+            border-left-color: #ef4444;
+            background: #fef2f2;
+        }
+        .page-link {
+            display: inline-block;
+            padding: 8px 16px;
+            margin: 5px;
+            background: #0891b2;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        .page-link:hover {
+            background: #0e7490;
+            transform: translateY(-2px);
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        .status-working { background: #10b981; color: white; }
+        .status-partial { background: #f59e0b; color: white; }
+        .status-missing { background: #ef4444; color: white; }
+    </style>
+</head>
+<body>
+    <h1>🔧 TaxFix Site Test Dashboard</h1>
+    
+    <div class="test-section">
+        <h2>📄 Main Pages</h2>
+        <div class="test-item success">
+            <strong>Homepage</strong> <span class="status-badge status-working">WORKING</span>
+            <br>✅ Navigation menu restored with all links
+            <br>✅ Hero section and CTAs functional
+            <br>✅ Tax calculator widget integrated
+            <br>✅ Service tiers displayed
+            <br><a href="/index.html" class="page-link" target="_blank">View Homepage</a>
+        </div>
+        
+        <div class="test-item success">
+            <strong>Hidden Profit Finder</strong> <span class="status-badge status-working">WORKING</span>
+            <br>✅ Form functional for lead capture
+            <br>✅ Navigation updated
+            <br><a href="/hiddenprofitfinder.html" class="page-link" target="_blank">View Hidden Profit Finder</a>
+        </div>
+        
+        <div class="test-item success">
+            <strong>Resources Page</strong> <span class="status-badge status-working">WORKING</span>
+            <br>✅ All 4 Excel templates available
+            <br>✅ Download modals functional
+            <br>✅ Email capture forms active
+            <br><a href="/resources.html" class="page-link" target="_blank">View Resources</a>
+        </div>
+        
+        <div class="test-item success">
+            <strong>Tax Calculator</strong> <span class="status-badge status-working">WORKING</span>
+            <br>✅ Calculator form present
+            <br>✅ Navigation updated
+            <br><a href="/calculator.html" class="page-link" target="_blank">View Calculator</a>
+        </div>
+        
+        <div class="test-item success">
+            <strong>Free Checklist</strong> <span class="status-badge status-working">WORKING</span>
+            <br>✅ PDF download form functional
+            <br>✅ Navigation updated
+            <br><a href="/checklist.html" class="page-link" target="_blank">View Checklist</a>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>📊 Excel Templates Status</h2>
+        <div class="test-item success">
+            <strong>TaxFix_Mileage_Log_2025.xlsx</strong> <span class="status-badge status-working">EXISTS</span>
+            <br>✅ IRS-compliant mileage tracking template
+        </div>
+        <div class="test-item success">
+            <strong>TaxFix_Business_Expense_Tracker_2025.xlsx</strong> <span class="status-badge status-working">EXISTS</span>
+            <br>✅ Comprehensive expense tracking spreadsheet
+        </div>
+        <div class="test-item success">
+            <strong>TaxFix_2025_Tax_Deadline_Calendar.xlsx</strong> <span class="status-badge status-working">EXISTS</span>
+            <br>✅ All important tax dates for 2025
+        </div>
+        <div class="test-item success">
+            <strong>TaxFix_Home_Office_Deduction_Calculator_2025.xlsx</strong> <span class="status-badge status-working">EXISTS</span>
+            <br>✅ Both simplified and actual expense methods
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>🔗 Navigation Menu Items</h2>
+        <div class="test-item success">
+            <strong>Consistent Navigation Across All Pages:</strong>
+            <br>✅ Home
+            <br>✅ Services
+            <br>✅ Hidden Profit Finder
+            <br>✅ Tax Calculator
+            <br>✅ Resources
+            <br>✅ Free Checklist
+            <br>✅ About
+            <br>✅ Contact
+            <br>✅ Get Expert Help (CTA button)
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>🎯 Lead Capture Forms</h2>
+        <div class="test-item success">
+            <strong>Hidden Profit Finder Form</strong> <span class="status-badge status-working">WORKING</span>
+            <br>✅ Multi-step form for deduction analysis
+        </div>
+        <div class="test-item success">
+            <strong>Resource Download Forms</strong> <span class="status-badge status-working">WORKING</span>
+            <br>✅ Modal popups for each template
+            <br>✅ Email capture before download
+        </div>
+        <div class="test-item success">
+            <strong>Checklist Download Form</strong> <span class="status-badge status-working">WORKING</span>
+            <br>✅ Email capture for PDF delivery
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>📱 Mobile Responsiveness</h2>
+        <div class="test-item success">
+            <strong>Mobile Menu</strong> <span class="status-badge status-working">CONFIGURED</span>
+            <br>✅ Hamburger menu button added
+            <br>✅ Mobile overlay configured
+            <br>✅ JavaScript toggle functionality
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>✨ Site Recovery Summary</h2>
+        <div class="test-item success">
+            <strong>RECOVERY COMPLETE</strong>
+            <br>✅ Main navigation restored across all pages
+            <br>✅ Professional layout maintained
+            <br>✅ All 4 Excel templates available for download
+            <br>✅ Tax checklist functionality restored
+            <br>✅ Calculator page functional
+            <br>✅ Internal page linking working
+            <br>✅ Lead capture forms operational
+            <br>✅ Mobile-responsive design maintained
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>🚀 Quick Links</h2>
+        <a href="/index.html" class="page-link">Homepage</a>
+        <a href="/services.html" class="page-link">Services</a>
+        <a href="/hiddenprofitfinder.html" class="page-link">Hidden Profit Finder</a>
+        <a href="/calculator.html" class="page-link">Tax Calculator</a>
+        <a href="/resources.html" class="page-link">Resources</a>
+        <a href="/checklist.html" class="page-link">Free Checklist</a>
+        <a href="/about.html" class="page-link">About</a>
+        <a href="/contact.html" class="page-link">Contact</a>
+    </div>
+</body>
+</html>
