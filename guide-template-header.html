@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GUIDE_TITLE | Tax Fix</title>
+    <meta name="description" content="GUIDE_DESCRIPTION">
+    <meta name="keywords" content="GUIDE_KEYWORDS">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://tax-fix.org/guides/GUIDE_SLUG">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://tax-fix.org/guides/GUIDE_SLUG">
+    <meta property="og:title" content="GUIDE_TITLE">
+    <meta property="og:description" content="GUIDE_DESCRIPTION">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="GUIDE_TITLE">
+    <meta name="twitter:description" content="GUIDE_DESCRIPTION">
+    
+    <!-- DNS Prefetch for performance -->
+    <link rel="dns-prefetch" href="//www.googletagmanager.com">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    
+    <!-- Preconnect to critical resources -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+    
+    <!-- Font Display Optimization -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
+    
+    <!-- Optimized Stylesheet -->
+    <link rel="stylesheet" href="../styles-optimized.css">
+    
+    <!-- Guide-specific styles -->
+    <style>
+        .guide-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        .guide-header {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f8ff 100%);
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .guide-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        
+        .guide-subtitle {
+            font-size: 1.25rem;
+            color: #6b7280;
+            margin-bottom: 2rem;
+        }
+        
+        .guide-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            font-size: 0.875rem;
+            color: #4b5563;
+        }
+        
+        .guide-content {
+            background: white;
+            border-radius: 1rem;
+            padding: 3rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .content-section {
+            margin-bottom: 3rem;
+        }
+        
+        .content-section h2 {
+            background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        
+        .content-section h3 {
+            color: #1f2937;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem 0;
+        }
+        
+        .content-section h4 {
+            color: #374151;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.75rem 0;
+        }
+        
+        .content-box {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-left: 4px solid #0891b2;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0.5rem;
+        }
+        
+        .tip-box {
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+            border-left: 4px solid #10b981;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0.5rem;
+        }
+        
+        .tip-box h4 {
+            color: #059669;
+            margin-bottom: 0.5rem;
+        }
+        
+        .warning-box {
+            background: linear-gradient(135deg, #fefce8 0%, #fef3c7 100%);
+            border-left: 4px solid #f59e0b;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0.5rem;
+        }
+        
+        .warning-box h4 {
+            color: #d97706;
+            margin-bottom: 0.5rem;
+        }
+        
+        .highlight-table {
+            background: white;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin: 2rem 0;
+        }
+        
+        .highlight-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .highlight-table th {
+            background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .highlight-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .highlight-table tr:hover {
+            background: #f8fafc;
+        }
+        
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .checklist-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-left: 4px solid #10b981;
+        }
+        
+        .checklist-item h4 {
+            color: #059669;
+            margin-bottom: 0.75rem;
+        }
+        
+        .checklist-item ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .checklist-item li {
+            padding: 0.25rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .checklist-item li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+        
+        .guide-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        .guide-nav a {
+            display: inline-block;
+            background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .guide-nav a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(8,145,178,0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .guide-title {
+                font-size: 2rem;
+            }
+            
+            .guide-content {
+                padding: 2rem;
+            }
+            
+            .guide-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .guide-nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+    
+    <!-- Optimized Analytics -->
+    <script defer src="../js/optimized-analytics.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header-main" role="banner">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo-link" aria-label="Tax Fix Home">
+                    <picture>
+                        <source srcset="../TaxFixLogo-optimized.webp" type="image/webp">
+                        <img src="../TaxFixLogo-optimized.png" alt="Tax Fix - Professional Tax Services for Gig Workers" class="logo" width="200" height="60" loading="eager">
+                    </picture>
+                </a>
+                
+                <button class="mobile-menu-btn" aria-label="Open mobile menu" aria-expanded="false">
+                    ☰
+                </button>
+                
+                <nav class="main-nav" id="mobile-nav" role="navigation" aria-label="Main navigation">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/services" class="nav-link">Services</a>
+                    <a href="/hiddenprofitfinder" class="nav-link">Hidden Profit Finder</a>
+                    <a href="/calculator" class="nav-link">Tax Calculator</a>
+                    <a href="/resources" class="nav-link">Resources</a>
+                    <a href="/checklist" class="nav-link">Free Checklist</a>
+                    <a href="/blog/" class="nav-link">Blog</a>
+                    <a href="/about" class="nav-link">About</a>
+                    <a href="/contact" class="nav-link">Contact</a>
+                    <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3Nqqg0NeTvGbTzo7olP5axJbp2FdtPGA9kzIeB0i-70EF5uo6Qy3kVj7vipm_3W9azofrf5_Kh" class="nav-cta-button">Get Expert Help</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobile-overlay"></div>
+    
+    <!-- Guide Header -->
+    <section class="guide-header">
+        <div class="container">
+            <h1 class="guide-title">GUIDE_TITLE</h1>
+            <p class="guide-subtitle">GUIDE_SUBTITLE</p>
+            <div class="guide-meta">
+                <span>📚 Comprehensive Guide</span>
+                <span>⏱️ READING_TIME min read</span>
+                <span>📅 Updated for 2025</span>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Guide Content -->
+    <main class="guide-container">
+        <div class="guide-content">
+            <!-- Content will be inserted here -->
+        </div>
+        
+        <!-- Guide Navigation -->
+        <div class="guide-nav">
+            <a href="/guides/">← All Guides</a>
+            <a href="/resources">Get Free Templates →</a>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-bottom">
+                <p class="footer-text">&copy; 2025 Tax Fix. All rights reserved. | <a href="/privacy">Privacy Policy</a> | <a href="/terms">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Mobile Menu JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const mobileNav = document.getElementById('mobile-nav');
+            const mobileOverlay = document.getElementById('mobile-overlay');
+            
+            if (mobileMenuBtn && mobileNav) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileNav.classList.toggle('active');
+                    if (mobileOverlay) {
+                        mobileOverlay.classList.toggle('active');
+                    }
+                    const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+                    mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
+                    mobileMenuBtn.textContent = isExpanded ? '☰' : '✕';
+                });
+            }
+            
+            if (mobileOverlay) {
+                mobileOverlay.addEventListener('click', function() {
+                    mobileNav.classList.remove('active');
+                    mobileOverlay.classList.remove('active');
+                    if (mobileMenuBtn) {
+                        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                        mobileMenuBtn.textContent = '☰';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

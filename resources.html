@@ -7,17 +7,34 @@
     <meta name="description" content="Download free tax templates, expense trackers, mileage logs, and tax deadline calendar. Essential resources for gig workers and freelancers.">
     <meta name="keywords" content="tax templates free download, mileage log template, expense tracker, tax deadline calendar, gig worker resources">
     
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://tax-fix.org/resources">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tax-fix.org/resources">
+    <meta property="og:title" content="Free Tax Resources & Templates for Gig Workers">
+    <meta property="og:description" content="Download professional tax templates, expense trackers, mileage logs, and tax deadline calendar.">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Tax Resources & Templates">
+    <meta name="twitter:description" content="Essential templates for gig workers and freelancers.">
+    
     <!-- DNS Prefetch for performance -->
     <link rel="dns-prefetch" href="//www.googletagmanager.com">
-    <link rel="dns-prefetch" href="//analytics.tiktok.com">
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     
     <!-- Preconnect to critical resources -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
-
-    <!-- Optimized Analytics (loads after page load) -->
+    
+    <!-- Font Display Optimization -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
+    
+    <!-- Optimized Analytics -->
     <script defer src="js/optimized-analytics.min.js"></script>
 
     
@@ -29,7 +46,7 @@
 
     
     
-    <link rel="stylesheet" href="styles.min.css">
+    <link rel="stylesheet" href="styles-optimized.css">
 </head>
 <body>
     <!-- Header -->
@@ -39,10 +56,14 @@
                 <a href="/" class="logo-link">
                     <picture>
                         <source srcset="TaxFixLogo-optimized.webp" type="image/webp">
-                        <img src="TaxFixLogo-optimized.png" alt="TaxFix - Keep More, Cry Less" class="logo" width="170" height="80" loading="eager" fetchpriority="high">
+                        <img src="TaxFixLogo-optimized.png" alt="Tax Fix - Professional Tax Services for Gig Workers" class="logo" width="200" height="60" loading="eager">
                     </picture>
                 </a>
-                <nav class="main-nav">
+                <button class="mobile-menu-btn" aria-label="Open mobile menu" aria-expanded="false">
+                    ☰
+                </button>
+                
+                <nav class="main-nav" id="mobile-nav">
                     <a href="/" class="nav-link">Home</a>
                     <a href="/services" class="nav-link">Services</a>
                     <a href="/hiddenprofitfinder" class="nav-link">Hidden Profit Finder</a>
@@ -56,6 +77,9 @@
             </div>
         </div>
     </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobile-overlay"></div>
 
     <!-- Hero Section -->
     <section class="hero-section">
@@ -281,8 +305,47 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MVPRJK8S"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-bottom">
+                <p class="footer-text">&copy; 2025 Tax Fix. All rights reserved. | <a href="/privacy">Privacy Policy</a> | <a href="/terms">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
     <!-- JavaScript -->
     <script>
+        // Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const mobileNav = document.getElementById('mobile-nav');
+            const mobileOverlay = document.getElementById('mobile-overlay');
+            
+            if (mobileMenuBtn && mobileNav) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileNav.classList.toggle('active');
+                    if (mobileOverlay) {
+                        mobileOverlay.classList.toggle('active');
+                    }
+                    const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+                    mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
+                    mobileMenuBtn.textContent = isExpanded ? '☰' : '✕';
+                });
+            }
+            
+            if (mobileOverlay) {
+                mobileOverlay.addEventListener('click', function() {
+                    mobileNav.classList.remove('active');
+                    mobileOverlay.classList.remove('active');
+                    if (mobileMenuBtn) {
+                        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                        mobileMenuBtn.textContent = '☰';
+                    }
+                });
+            }
+        });
+
         // Modal functions
         function openModal(modalId) {
             document.getElementById(modalId).style.display = 'block';
