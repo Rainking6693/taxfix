@@ -1,506 +1,302 @@
 <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tax Fix - Professional Tax Services & Tools for Gig Workers | Save $800+</title>
-    <meta name="description" content="Tax services & tools for gig workers. Find $800+ in hidden deductions with our free analyzer. Professional tax prep for Uber, DoorDash, freelancers.">
-    <meta name="keywords" content="gig worker taxes, freelancer tax service, uber tax deductions, doordash taxes, 1099 tax help, hidden profit finder, tax calculator, business expense tracker">
-    
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://tax-fix.org/">
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="en_US">
-    <meta property="og:url" content="https://tax-fix.org/">
-    <meta property="og:site_name" content="Tax Fix">
-    <meta property="og:title" content="Tax Fix - Hidden Profit Finder for Gig Workers">
-    <meta property="og:description" content="Save $800+ on taxes with our AI-powered deduction finder. Professional tax services for gig workers and freelancers.">
-    <meta property="og:image" content="https://tax-fix.org/images/taxfix-og-image.jpg">
-    
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Tax Fix - Gig Worker Tax Services">
-    <meta name="twitter:description" content="Find hidden tax deductions worth $800+. Professional tax help for gig workers.">
-    <meta name="twitter:image" content="https://tax-fix.org/images/taxfix-twitter-card.jpg">
-    
-    <!-- Pinterest Domain Verification -->
-    <meta name="p:domain_verify" content="dd00542a7e343619d5f289175863fd0b">
-    
-    <!-- DNS Prefetch for performance -->
-    <link rel="dns-prefetch" href="//www.googletagmanager.com">
-    <link rel="dns-prefetch" href="//analytics.tiktok.com">
-    <link rel="dns-prefetch" href="//fonts.googleapis.com">
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    
-    <!-- Preconnect to critical resources -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
-    
-    <!-- Font Display Optimization -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
-    
-    <!-- Critical CSS -->
+    <title>Tax Fix - Stop Overpaying Taxes</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
-            color: #374151;
-            background: #ffffff;
+            color: #333;
         }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-        
-        /* Header Styles */
-        .header-main {
-            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-            padding: 1rem 0;
-            border-bottom: 2px solid #e5e7eb;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        /* Header */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 100;
         }
-        
-        .header-content {
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 1rem 0;
         }
-        
-        .logo-link {
-            display: inline-block;
-        }
-        
         .logo {
-            height: 60px;
-            width: auto;
-            max-width: 200px;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2196F3;
+            text-decoration: none;
         }
-        
-        /* Navigation */
-        .main-nav {
+        .nav-links {
             display: flex;
-            gap: 1.5rem;
-            align-items: center;
+            list-style: none;
+            gap: 2rem;
         }
-        
-        .nav-link {
-            color: #1f2937;
+        .nav-links a {
             text-decoration: none;
+            color: #333;
             font-weight: 500;
-            transition: color 0.3s ease;
-            padding: 0.5rem;
-        }
-        
-        .nav-link:hover,
-        .nav-link.active {
-            color: #0891b2;
-        }
-        
-        .nav-cta-button {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            text-decoration: none;
-            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2);
         }
-        
-        .nav-cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(16, 185, 129, 0.3);
-        }
-        
-        /* Mobile Menu */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-        
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .main-nav {
-                display: none;
-                position: fixed;
-                top: 0;
-                left: -100%;
-                width: 280px;
-                height: 100vh;
-                background: white;
-                flex-direction: column;
-                padding: 4rem 2rem;
-                box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-                transition: left 0.3s ease;
-            }
-            
-            .main-nav.active {
-                left: 0;
-                display: flex;
-            }
-            
-            .logo {
-                height: 50px;
-            }
-        }
-        
-        .mobile-menu-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 99;
-        }
-        
-        .mobile-menu-overlay.active {
-            display: block;
+        .nav-links a:hover {
+            background: #f0f9ff;
+            color: #2196F3;
         }
         
         /* Hero Section */
-        .hero-section {
-            background: linear-gradient(180deg, #f0f9ff 0%, #ffffff 100%);
-            padding: 5rem 0;
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 0;
             text-align: center;
         }
-        
-        .hero-title {
-            font-size: 3rem;
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
             font-weight: 700;
-            color: #1f2937;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
         }
-        
-        .hero-highlight {
-            background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .hero-description {
-            font-size: 1.25rem;
-            color: #6b7280;
+        .hero p {
+            font-size: 1.3rem;
             margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            opacity: 0.9;
         }
-        
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 2rem;
-        }
-        
-        .btn-primary-gradient {
-            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-            color: #1f2937;
-            padding: 1rem 2rem;
-            border-radius: 0.75rem;
-            font-weight: 700;
-            text-decoration: none;
+        .cta-button {
             display: inline-block;
+            background: #ffd700;
+            color: #333;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1.1rem;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(251, 191, 36, 0.3);
+            margin: 0.5rem;
         }
-        
-        .btn-primary-gradient:hover {
+        .cta-button:hover {
+            background: #ffed4a;
             transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(251, 191, 36, 0.4);
         }
         
-        .hero-social-proof {
-            font-size: 0.875rem;
-            color: #6b7280;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-        
-        /* Section Styles */
-        section {
+        /* Hidden Profit Finder */
+        .profit-finder {
+            background: #f8fafc;
             padding: 4rem 0;
         }
-        
-        .section-title-center {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #1f2937;
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-        
-        .section-description-center {
-            font-size: 1.125rem;
-            color: #6b7280;
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 3rem auto;
-        }
-        
-        /* Features Grid */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-        
-        .feature-card {
+        .finder-container {
             background: white;
-            padding: 2rem;
-            border-radius: 1rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
         }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        .form-group {
+            margin-bottom: 1.5rem;
         }
-        
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .feature-card h3 {
-            font-size: 1.25rem;
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
             font-weight: 600;
-            color: #1f2937;
-            margin-bottom: 0.75rem;
+            color: #333;
+        }
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        .submit-btn {
+            width: 100%;
+            background: #2196F3;
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .results {
+            display: none;
+            background: #f0f9ff;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+        .results.show { display: block; }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 4rem 0;
+            background: white;
+        }
+        .testimonials h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2196F3;
+        }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .testimonial {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid #2196F3;
+        }
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: #555;
+        }
+        .testimonial .name {
+            font-weight: bold;
+            color: #2196F3;
         }
         
-        .feature-card p {
-            color: #6b7280;
-            line-height: 1.6;
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #555;
+            color: #ccc;
         }
         
+        /* Mobile */
         @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2rem;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn-primary-gradient {
-                width: 100%;
-                max-width: 300px;
-            }
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.5rem; }
+            .container { padding: 0 15px; }
         }
     </style>
-    
-    <!-- Main Stylesheet -->
-    <link rel="stylesheet" href="styles-optimized.css">
-    
-    <!-- Schema.org JSON-LD -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Tax Fix",
-        "url": "https://tax-fix.org/",
-        "logo": "https://tax-fix.org/TaxFixLogo-optimized.png",
-        "email": "info@tax-fix.org",
-        "description": "Professional tax services and tools for gig workers, freelancers, and independent contractors",
-        "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US"
-        },
-        "sameAs": [
-            "https://tiktok.com/@taxfixpro",
-            "https://instagram.com/taxfixpro",
-            "https://youtube.com/taxfixpro"
-        ],
-        "offers": {
-            "@type": "Offer",
-            "name": "Hidden Profit Finder",
-            "description": "Free tax deduction analyzer for gig workers",
-            "url": "https://tax-fix.org/hiddenprofitfinder",
-            "price": "0",
-            "priceCurrency": "USD"
-        }
-    }
-    </script>
-    
-    <!-- Optimized Analytics -->
-    <script defer src="js/optimized-analytics.min.js"></script>
 </head>
 <body>
-    <!-- Skip to main content for accessibility -->
-    <a href="#main-content" class="sr-only">Skip to main content</a>
-    
-    <!-- Header -->
-    <header class="header-main" role="banner">
-        <div class="container">
-            <div class="header-content">
-                <a href="/" class="logo-link" aria-label="Tax Fix Home">
-                    <picture>
-                        <source srcset="TaxFixLogo-optimized.webp" type="image/webp">
-                        <img src="TaxFixLogo-optimized.png" alt="Tax Fix - Professional Tax Services for Gig Workers" class="logo" width="200" height="60" loading="eager">
-                    </picture>
-                </a>
-                
-                <button class="mobile-menu-btn" aria-label="Open mobile menu" aria-expanded="false">
-                    ☰
-                </button>
-                
-                <nav class="main-nav" id="mobile-nav" role="navigation" aria-label="Main navigation">
-                    <a href="/" class="nav-link active">Home</a>
-                    <a href="/services" class="nav-link">Services</a>
-                    <a href="/hiddenprofitfinder" class="nav-link">Hidden Profit Finder</a>
-                    <a href="/calculator" class="nav-link">Tax Calculator</a>
-                    <a href="/resources" class="nav-link">Resources</a>
-                    <a href="/checklist" class="nav-link">Free Checklist</a>
-                    <a href="/about" class="nav-link">About</a>
-                    <a href="/contact" class="nav-link">Contact</a>
-                    <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3Nqqg0NeTvGbTzo7olP5axJbp2FdtPGA9kzIeB0i-70EF5uo6Qy3kVj7vipm_3W9azofrf5_Kh" class="nav-cta-button">Get Expert Help</a>
-                </nav>
-            </div>
-        </div>
+    <header>
+        <nav class="container">
+            <a href="/" class="logo">Tax Fix</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/services">Services</a></li>
+                <li><a href="/resources">Resources</a></li>
+                <li><a href="/calculator">Calculator</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
-    
-    <!-- Mobile Menu Overlay -->
-    <div class="mobile-menu-overlay" id="mobile-overlay"></div>
-    
-    <!-- Main Content -->
-    <main id="main-content">
-        <!-- Hero Section -->
-        <section class="hero-section">
+
+    <main>
+        <section class="hero">
             <div class="container">
-                <div class="hero-content">
-                    <h1 class="hero-title">
-                        Tax Services & Tools for <span class="hero-highlight">Gig Workers</span>
-                    </h1>
-                    <p class="hero-description">
-                        Find deductions worth $800+ with our free analyzer or get expert help from our CPAs
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="/hiddenprofitfinder" class="btn-primary-gradient">
-                            Find Hidden Deductions FREE
-                        </a>
-                        <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3Nqqg0NeTvGbTzo7olP5axJbp2FdtPGA9kzIeB0i-70EF5uo6Qy3kVj7vipm_3W9azofrf5_Kh" class="btn-primary-gradient">
-                            Get Expert Help
-                        </a>
+                <h1>Stop Overpaying Taxes - We Handle Everything</h1>
+                <p>Professional Tax & Accounting Services for Gig Workers and Freelancers</p>
+                <a href="#profit-finder" class="cta-button">Find My Hidden Tax Savings</a>
+            </div>
+        </section>
+
+        <section id="profit-finder" class="profit-finder">
+            <div class="container">
+                <div class="finder-container">
+                    <h2 style="text-align: center; color: #2196F3; margin-bottom: 2rem;">Hidden Profit Finder</h2>
+                    
+                    <form name="hidden-profit-finder" method="POST" data-netlify="true">
+                        <div class="form-group">
+                            <label for="gigType">What type of gig work do you do?</label>
+                            <select id="gigType" name="gigType" required>
+                                <option value="">Select your work type</option>
+                                <option value="uber-lyft">Uber/Lyft Driver</option>
+                                <option value="doordash">DoorDash/Food Delivery</option>
+                                <option value="freelancer">Freelancer</option>
+                                <option value="etsy">Etsy/E-commerce Seller</option>
+                                <option value="other">Other Gig Work</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="income">Monthly income range?</label>
+                            <select id="income" name="income" required>
+                                <option value="">Select income range</option>
+                                <option value="under-1500">Under $1,500/month</option>
+                                <option value="1500-3000">$1,500 - $3,000/month</option>
+                                <option value="3000-5000">$3,000 - $5,000/month</option>
+                                <option value="over-5000">Over $5,000/month</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email for your personalized report:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <button type="submit" class="submit-btn">Find My Hidden Tax Savings</button>
+                    </form>
+
+                    <div id="results" class="results">
+                        <h3>Your Personalized Tax Savings Report</h3>
+                        <p>Based on your responses, you could be missing significant tax deductions. Our professional team can help you maximize these savings.</p>
+                        <div style="margin-top: 2rem;">
+                            <a href="/contact" class="cta-button">Book Free Consultation</a>
+                        </div>
                     </div>
-                    <p class="hero-social-proof">
-                        ⭐⭐⭐⭐⭐ 15,000+ gig workers found hidden deductions • Free • 2 minutes
-                    </p>
                 </div>
             </div>
         </section>
-        
-        <!-- Why Choose Section -->
-        <section class="freelancer-bookkeeping-section">
+
+        <section class="testimonials">
             <div class="container">
-                <h2 class="section-title-center">Why Choose Tax Fix for Your Business</h2>
-                <p class="section-description-center">
-                    Comprehensive accounting, bookkeeping, and tax services designed specifically for freelancers, gig workers, and 1099 contractors
-                </p>
-                
-                <div class="features-grid">
-                    <article class="feature-card">
-                        <div class="feature-icon" aria-hidden="true">📊</div>
-                        <h3>Automated Expense Tracking</h3>
-                        <p>Our tax-focused bookkeeping service helps organize and categorize your business expenses for tax purposes. We provide guidance on proper expense tracking and deduction optimization.</p>
-                    </article>
-                    
-                    <article class="feature-card">
-                        <div class="feature-icon" aria-hidden="true">💰</div>
-                        <h3>Tax Preparation Included</h3>
-                        <p>Complete tax preparation service included with every freelancer bookkeeping package. Our experts ensure you maximize deductions and stay compliant with IRS requirements.</p>
-                    </article>
-                    
-                    <article class="feature-card">
-                        <div class="feature-icon" aria-hidden="true">📈</div>
-                        <h3>Professional Financial Reports</h3>
-                        <p>Get detailed P&L statements, cash flow reports, and tax-ready summaries. Perfect for loan applications, business planning, and quarterly tax filings.</p>
-                    </article>
-                    
-                    <article class="feature-card">
-                        <div class="feature-icon" aria-hidden="true">🎯</div>
-                        <h3>Dedicated Support Team</h3>
-                        <p>Work with bookkeeping professionals who understand freelance work. Get answers to your questions and guidance on business financial decisions.</p>
-                    </article>
-                </div>
-                
-                <div class="cta-section" style="text-align: center;">
-                    <a href="/pricing" class="btn-primary-gradient">
-                        Try Our Freelancer Accounting Software Free
-                    </a>
+                <h2>What Our Clients Say</h2>
+                <div class="testimonial-grid">
+                    <div class="testimonial">
+                        <p>"Tax Fix found $1,200 in deductions I didn't know I could claim as an Uber driver."</p>
+                        <div class="name">- Sarah M., Uber Driver</div>
+                    </div>
+                    <div class="testimonial">
+                        <p>"As a freelance designer, Tax Fix organized everything and saved me $800 last year."</p>
+                        <div class="name">- Mike R., Freelance Designer</div>
+                    </div>
+                    <div class="testimonial">
+                        <p>"Running my Etsy shop was a tax nightmare until Tax Fix showed me what I could deduct."</p>
+                        <div class="name">- Jennifer L., Etsy Seller</div>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
-    
-    <!-- Footer -->
-    <footer class="footer" role="contentinfo">
+
+    <footer>
         <div class="container">
-            <p>&copy; 2025 Tax Fix. All rights reserved. | <a href="/privacy">Privacy Policy</a> | <a href="/terms">Terms of Service</a></p>
+            <div class="footer-bottom">
+                <p>© 2025 Tax Fix. Professional tax services for gig workers.</p>
+            </div>
         </div>
     </footer>
-    
-    <!-- Mobile Menu JavaScript -->
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-            const mobileNav = document.getElementById('mobile-nav');
-            const mobileOverlay = document.getElementById('mobile-overlay');
-            
-            if (mobileMenuBtn && mobileNav) {
-                mobileMenuBtn.addEventListener('click', function() {
-                    mobileNav.classList.toggle('active');
-                    if (mobileOverlay) {
-                        mobileOverlay.classList.toggle('active');
-                    }
-                    const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
-                    mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
-                    mobileMenuBtn.textContent = isExpanded ? '☰' : '✕';
-                });
-            }
-            
-            if (mobileOverlay) {
-                mobileOverlay.addEventListener('click', function() {
-                    mobileNav.classList.remove('active');
-                    mobileOverlay.classList.remove('active');
-                    if (mobileMenuBtn) {
-                        mobileMenuBtn.setAttribute('aria-expanded', 'false');
-                        mobileMenuBtn.textContent = '☰';
-                    }
-                });
-            }
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('results').classList.add('show');
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
         });
     </script>
 </body>
 </html>
+        
